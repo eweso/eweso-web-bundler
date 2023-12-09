@@ -1,10 +1,10 @@
 {
   "name": "@eweso/build",
-  "version": "23.1209.4",
+  "version": "23.1209.5",
   "bin": {
     "compile-sass": "./bin/compile-sass"
   },
-  "devDependencies": {
+  "dependencies": {
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
     "csso": "^5.0.5",
