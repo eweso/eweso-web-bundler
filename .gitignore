@@ -4,5 +4,8 @@
 # System
 .DS_Store
 
+# Composer
+vendor
+
 # NPM
 node_modules
