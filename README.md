@@ -4,19 +4,38 @@ This library provides a TypesSript base config, webpack base config and a sass c
 
 ## Installation
 
-Add this to the existing package.json:
+Run this command in the directory where your main `package.json` is located.
+
+```sh
+npm i -D github:eweso/eweso-web-bundler
+```
+
+Adding `github:eweso/eweso-web-bundler` only to the `package.json` won't install the dependencies!
+
+## Usage
+
+### TypeScript
+
+Create a `tsconfig.json` in the application root where the `package.json` and `node_modules` folder are located and add this to the file for the barebone configuration. 
 
 ```json
 {
-  "devDependencies": {
-    "@eweso/build": "https://github.com/eweso/eweso-web-bundler"
+  "extends": "./node_modules/@eweso/build/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
   }
 }
-
 ```
 
-Or run this command below to add this package via command line:
+### Webpack
 
-```sh
-npm i https://github.com/eweso/eweso-web-bundler -D
+Create a `webpack.config.js` in the application root, where your `tsconfig.json` and the `package.json` is located and add this to the file:
+
+```Node
+module.exports = require('./node_modules/@eweso/build/webpack.config.js');
 ```
