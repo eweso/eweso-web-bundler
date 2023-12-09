@@ -1,0 +1,7 @@
+#!/bin/bash
+
+_source_file="${PWD}/$1"
+_target_file="${PWD}/$2"
+
+sass "${_source_file}" "${_target_file}" && echo "Compiled SASS" &&
+csso "${_target_file}" --output "${_target_file}" --force-media-merge && echo "Optimized CSS"
