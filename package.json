@@ -1,6 +1,6 @@
 {
   "name": "@eweso/build",
-  "version": "0.1",
+  "version": "23.1209.4",
   "bin": {
     "compile-sass": "./bin/compile-sass"
   },
