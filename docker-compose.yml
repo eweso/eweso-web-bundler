@@ -1,0 +1,7 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - .:/opt/project
