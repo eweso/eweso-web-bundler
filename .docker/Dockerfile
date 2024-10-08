@@ -1,2 +1,2 @@
 FROM node:current-slim
-RUN npm install npm@latest -g
+RUN npm install -g npm@latest
