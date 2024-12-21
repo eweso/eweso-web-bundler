@@ -1,7 +1,5 @@
 services:
   node:
-    build:
-      context: .
-      dockerfile: .docker/Dockerfile
+    image: "eweso/devcontainer:latest"
     volumes:
       - .:/opt/project
