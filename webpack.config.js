@@ -1,7 +1,6 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssoWebpackPlugin = require('csso-webpack-plugin').default;
+const {EsbuildPlugin} = require('esbuild-loader');
 
 module.exports = {
     mode: 'production',
@@ -11,7 +10,7 @@ module.exports = {
     },
     output: {
         filename: '[name].min.js',
-        chunkFilename: "[name]-[chunkhash].min.js",
+        chunkFilename: '[name]-[chunkhash].min.js',
     },
     optimization: {
         splitChunks: {
@@ -23,7 +22,7 @@ module.exports = {
                         }
 
                         return module.resource.includes('node_modules')
-                            || module.resource.includes('assets/libraries')
+                            || module.resource.includes('assets/libraries');
                     },
                     name: 'vendor',
                     chunks: 'all'
@@ -32,18 +31,8 @@ module.exports = {
         },
         minimize: true,
         minimizer: [
-            new CssMinimizerPlugin(),
-            new TerserPlugin({
-                terserOptions: {
-                    format: {
-                        comments: false,
-                    },
-                },
-                extractComments: {
-                    filename: (fileData) => {
-                        return `assets/${fileData.filename}.LICENSE.txt${fileData.query}`;
-                    },
-                }
+            new EsbuildPlugin({
+                target: 'es2017'
             }),
         ]
     },
@@ -53,8 +42,8 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             //filename: "[name].bundle.css",
-            filename: "vendor.min.css",
-            chunkFilename: "assets/[id].min.css"
+            filename: 'vendor.min.css',
+            chunkFilename: 'assets/[id].min.css'
         }),
         new CssoWebpackPlugin(),
     ],
@@ -78,7 +67,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             sourceMap: true
                         }
@@ -94,4 +83,4 @@ module.exports = {
             }
         ]
     },
-}
+};
