@@ -16,8 +16,8 @@ main() (
   _root_dir="$(realpath "$(_current_script_dir)/..")"
   cd "${_root_dir}" || exit
 
-  docker compose run --build --rm node \
-    bash -c "cd /opt/project && npm ${*}"
+  docker compose run --build --rm --workdir /opt/project node \
+    npm "${@}"
 )
 
 set -o pipefail
