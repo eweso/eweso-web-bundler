@@ -1,5 +1,7 @@
 services:
   node:
     image: "eweso/devcontainer:latest"
+    environment:
+      - NPM_CONFIG_UPDATE_NOTIFIER=false
     volumes:
       - .:/opt/project

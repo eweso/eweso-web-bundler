@@ -2,7 +2,6 @@
 
 main() (
   _current_script_dir() (
-    # Not symlink? Return script directory
     if [[ ! -L "$0" ]]; then
       dirname "$0"
     elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -17,10 +16,10 @@ main() (
   cd "${_root_dir}" || exit
 
   docker compose run --build --rm --workdir /opt/project node \
-    bash
+    "${@}"
 )
 
 set -o pipefail
 set -o nounset
-main
+main "${@}"
 unset -f main

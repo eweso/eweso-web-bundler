@@ -2,7 +2,6 @@
 
 main() (
   _current_script_dir() (
-    # Not symlink? Return script directory
     if [[ ! -L "$0" ]]; then
       dirname "$0"
     elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -14,9 +13,9 @@ main() (
 
   local _root_dir
   _root_dir="$(realpath "$(_current_script_dir)/..")"
-  cd "${_root_dir}" || exit
+  cd "${_root_dir}" || exit 1
 
-  docker compose run --build --rm --workdir /opt/project node \
+  bash scripts/docker-run \
     npm "${@}"
 )
 
