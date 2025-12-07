@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -o pipefail
+set -o nounset
 
 _source_file="${PWD}/$1"
 _target_file="${PWD}/$2"

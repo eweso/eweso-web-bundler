@@ -1,24 +1,18 @@
-#!/bin/bash
-
-main() (
-  _current_script_dir() (
-    if [[ ! -L "$0" ]]; then
-      dirname "$0"
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-      dirname "$(greadlink -f "$0")"
-    else
-      dirname "$(readlink -f "$0")"
-    fi
-  )
-
-  local _root_dir
-  _root_dir="$(realpath "$(_current_script_dir)/..")"
-  cd "${_root_dir}" || exit 1
-
-  bash scripts/docker-run bash
-)
-
+#!/usr/bin/env bash
 set -o pipefail
 set -o nounset
-main
-unset -f main
+
+_current_script_dir() (
+  if [[ ! -L "$0" ]]; then
+    dirname "$0"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    dirname "$(greadlink -f "$0")"
+  else
+    dirname "$(readlink -f "$0")"
+  fi
+)
+
+_root_dir="$(realpath "$(_current_script_dir)/..")"
+cd "${_root_dir}" || exit 1
+
+bash scripts/docker-run bash
