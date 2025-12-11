@@ -12,9 +12,8 @@ _current_script_dir() (
   fi
 )
 
-_root_dir="$(realpath "$(_current_script_dir)/..")"
-cd "${_root_dir}" || exit
-
-docker compose run --build --rm --remove-orphans \
+cd "$(realpath "$(_current_script_dir)/..")" || exit
+export COMPOSE_IGNORE_ORPHANS=true
+docker compose run --build --rm \
   --workdir /opt/project node \
   "${@}"

@@ -12,8 +12,5 @@ _current_script_dir() (
   fi
 )
 
-_root_dir="$(realpath "$(_current_script_dir)/..")"
-cd "${_root_dir}" || exit 1
-
-bash scripts/docker-run \
-  npm "${@}"
+cd "$(realpath "$(_current_script_dir)/..")" || exit 1
+bash scripts/docker-run npm "${@}"
