@@ -22,7 +22,8 @@ module.exports = {
                         }
 
                         return module.resource.includes('node_modules')
-                            || module.resource.includes('assets/libraries');
+                            || module.resource.includes('assets/libraries')
+                            || module.resource.includes('libraries');
                     },
                     name: 'vendor',
                     chunks: 'all'
