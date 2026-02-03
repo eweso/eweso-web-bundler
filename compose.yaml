@@ -1,0 +1,7 @@
+name: eweso-web-bundler
+services:
+  node:
+    hostname: "devcontainer"
+    image: "eweso/devcontainer:latest"
+    volumes:
+      - .:/opt/project

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -o pipefail
+set -o nounset
+
+_current_script_dir() (
+  if [[ ! -L "$0" ]]; then
+    dirname "$0"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    dirname "$(greadlink -f "$0")"
+  else
+    dirname "$(readlink -f "$0")"
+  fi
+)
+
+cd "$(realpath "$(_current_script_dir)/..")" || exit 1
+bash scripts/docker-run npm "${@}"

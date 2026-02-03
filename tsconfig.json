@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "allowJs": false,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "target": "ES2017",
+    "module": "ES2015",
+    "outDir": "dist"
+  }
+}
