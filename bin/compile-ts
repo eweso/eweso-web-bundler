@@ -2,4 +2,4 @@
 set -o pipefail
 set -o nounset
 
-ts && webpack --color
+tsc && webpack --color
