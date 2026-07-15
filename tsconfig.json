@@ -5,6 +5,7 @@
     "alwaysStrict": true,
     "strict": false,
     "allowSyntheticDefaultImports": true,
+    "noUncheckedSideEffectImports": false,
     "isolatedModules": true,
     "noEmit": true,
     "moduleResolution": "bundler",
