@@ -3,12 +3,13 @@
     "skipLibCheck": true,
     "allowJs": false,
     "alwaysStrict": true,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "noEmit": true,
     "moduleResolution": "bundler",
-    "target": "es2017",
     "module": "es2015",
+    "target": "es2017",
     "outDir": "dist"
   }
 }
